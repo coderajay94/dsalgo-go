@@ -18,7 +18,7 @@ func main() {
 func sortByValue(nums []int) []int {
 
 	for i := 0; i < len(nums)-1; i++ {
-		for j := i + 1; j < len(nums)-1; j++ {
+		for j := i + 1; j < len(nums)-i; j++ {
 			if nums[i] > nums[j] {
 				nums[i], nums[j] = nums[j], nums[i]
 			}
@@ -32,7 +32,7 @@ func sortByValue(nums []int) []int {
 func sortByReference(nums *[]int) {
 
 	for i := 0; i < len(*nums)-1; i++ {
-		for j := i + 1; j < len(*nums)-1; j++ {
+		for j := i + 1; j < len(*nums)-i; j++ {
 			if (*nums)[i] > (*nums)[j] {
 				(*nums)[i], (*nums)[j] = (*nums)[j], (*nums)[i]
 			}
