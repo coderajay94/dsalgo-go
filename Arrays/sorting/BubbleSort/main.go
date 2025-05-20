@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+//bubble sort is also known as sinking sort, exchange sort
 func main() {
 	nums := []int{11, 23, 44, 33, 12, 89}
 
