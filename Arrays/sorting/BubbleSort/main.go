@@ -7,12 +7,28 @@ func main() {
 
 	fmt.Println("before sorting array :", nums)
 
-	sort(&nums)
-	fmt.Println("sorted array :", nums)
+	sortByReference(&nums)
+
+	fmt.Println("sorted array with reference:", nums)
+	fmt.Println("sorted array with value:", sortByValue(nums))
 }
 
-//bubble so
-func sort(nums *[]int) {
+//bubble sort with pass by reference
+func sortByValue(nums []int) []int {
+
+	for i := 0; i < len(nums)-1; i++ {
+		for j := i + 1; j < len(nums)-1; j++ {
+			if nums[i] > nums[j] {
+				nums[i], nums[j] = nums[j], nums[i]
+			}
+		}
+	}
+	return nums
+
+}
+
+//bubble sort with pass by reference
+func sortByReference(nums *[]int) {
 
 	for i := 0; i < len(*nums)-1; i++ {
 		for j := i + 1; j < len(*nums)-1; j++ {
