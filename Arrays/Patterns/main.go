@@ -17,8 +17,63 @@ func main() {
 	// fmt.Println()
 	// pattern5(5)
 
+	// fmt.Println()
+	// pattern6(5)
+
+	// fmt.Println()
+	// pattern7(5)
+
 	fmt.Println()
-	pattern6(5)
+	pattern8(4)
+
+}
+
+func pattern8(times int) {
+	counter := 0
+	for row := 1; row <= 2*times; row++ {
+
+		if row > times {
+			counter = 2*times - row
+		} else {
+			counter = row
+		}
+
+		for space := 1; space <= times-counter; space++ {
+			fmt.Print("  ")
+		}
+
+		for col := counter; col >= 1; col-- {
+			fmt.Print(col, " ")
+		}
+
+		for num := 2; num <= counter; num++ {
+			fmt.Print(num, " ")
+		}
+		fmt.Println()
+
+	}
+
+}
+
+func pattern7(times int) {
+
+	for row := 1; row <= times; row++ {
+		//print spaces
+		for col := times - row; col > 0; col-- {
+			fmt.Print("  ")
+		}
+
+		for num := row; num >= 1; num-- {
+			fmt.Print(num, " ")
+		}
+
+		for num := 2; num <= row; num++ {
+			fmt.Print(num, " ")
+		}
+
+		fmt.Println()
+	}
+
 }
 
 func pattern6(times int) {
