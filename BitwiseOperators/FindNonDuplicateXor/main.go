@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+//https://leetcode.com/problems/single-number/
 func main() {
 
 	//if you xor any number with same nmber gives 0
