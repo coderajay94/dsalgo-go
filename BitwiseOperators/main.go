@@ -9,6 +9,8 @@ func main() {
 	//so to check even odd we just need to and it with one and it will give us the last digit in binary
 	//that is responsible for even or odd
 	fmt.Println("testing bitwise operator")
+
+	//this last bit is called lsb - least significant bit
 	fmt.Println(isOdd(12))
 	fmt.Println(isOdd(1))
 	fmt.Println(isOdd(0))
