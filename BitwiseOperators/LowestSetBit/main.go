@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 func main() {
 	//fmt.Println(lowestSetBit(12))
@@ -11,6 +14,11 @@ func main() {
 	fmt.Println(countSetBits(0))
 	// will only check for positives
 	fmt.Println(countSetBits(-8))
+
+	binary := strconv.FormatInt(int64(1244323), 2)
+	//100101111110010100011
+	fmt.Printf("Binary of %d is %s\n", 1244323, binary)
+	fmt.Println(countSetBits(1244323))
 
 }
 

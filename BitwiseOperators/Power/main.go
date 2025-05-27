@@ -47,7 +47,7 @@ func calculatePowerNegativeAndFloat(x float64, n int) float64 {
 	}
 
 	for n > 0 {
-		//step 1 calculate the digit
+		//step 1 calculate the last digit by doing & with 1
 		if n&1 == 1 {
 			res = res * x
 		}
