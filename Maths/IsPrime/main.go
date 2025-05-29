@@ -25,6 +25,7 @@ func differenceOfSums(n int, m int) int {
 	}
 
 	for i := 1; i <= m; i++ {
+		//condition
 		if i%m == 0 {
 			num2 = num2 + i
 			fmt.Println(i)
