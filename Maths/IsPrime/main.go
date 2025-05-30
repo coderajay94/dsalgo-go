@@ -23,7 +23,7 @@ func differenceOfSums(n int, m int) int {
 			fmt.Println(i)
 		}
 	}
-
+	//just doing empty commit, just to keep the consistency
 	for i := 1; i <= m; i++ {
 		//condition
 		if i%m == 0 {
