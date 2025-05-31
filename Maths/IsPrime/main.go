@@ -31,7 +31,6 @@ func differenceOfSums(n int, m int) int {
 			fmt.Println(i)
 		}
 	}
-	fmt.Println(num2)
 
 	return num1 - num2
 }
