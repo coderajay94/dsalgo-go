@@ -16,4 +16,7 @@ func main() {
 
 	fmt.Println(c.Get("User1"))
 
+	x := (0 + 1) / 2
+	fmt.Println(x)
+
 }
