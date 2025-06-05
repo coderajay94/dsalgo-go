@@ -14,9 +14,4 @@ func main() {
 	c.Set("User124", "lekin kumar")
 	c.Set("User56", "ragu kumar")
 
-	fmt.Println(c.Get("User1"))
-
-	x := (0 + 1) / 2
-	fmt.Println(x)
-
 }
