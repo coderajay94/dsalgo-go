@@ -21,10 +21,12 @@ func main() {
 // but ++1 will increase the count then uses it
 // so its safe to use it
 
-// will only work for positive numbers
+// will only work for positive numbers, use abs value if you want it to work for negatives
+// as math.log10(-ve number) = nan, which will give unexpeted results in int
+
+// approach 2 with using helper function
 func reverse2(n int) int {
-	countdigits := int(math.Log10(float64(n)) + 1)
-	fmt.Println("digits", countdigits)
+	countdigits := int(math.Log10(math.Abs(float64(n))) + 1)
 	return helper(n, countdigits)
 }
 
@@ -36,7 +38,6 @@ func helper(n int, digits int) int {
 
 	last := n % 10
 	digits = digits - 1
-	fmt.Println("printing ", last*int(math.Pow10(digits)))
 	return last*int(math.Pow10(digits)) + helper(n/10, digits)
 }
 
