@@ -11,12 +11,33 @@ func main() {
 	fmt.Println("before linear search using recursion", nums)
 	fmt.Println("after linear search using recursion", linearSearch(nums, target, 0, len(nums)-1))
 	fmt.Println("all matched elements as target", linearSearchAllOccurances(nums, 3, 0, []int{}))
+	fmt.Println("all matched elements as target new", linearSearchAllOccurancesNew(nums, 3, 0))
+}
+
+// wihtout using any new resp variable or slice
+func linearSearchAllOccurancesNew(nums []int, target, start int) []int {
+	resp := []int{}
+
+	if start == len(nums) {
+		return resp
+	}
+
+	if nums[start] == target {
+		resp = append(resp, start)
+	}
+
+	call := linearSearchAllOccurancesNew(nums, target, start+1)
+	if len(call) > 0 {
+		resp = append(resp, call...)
+	}
+	return resp
 }
 
 // var resp = []int{}
 // or
 // directly pass an slice argument to return the response
 // get all the occurances of the target
+
 func linearSearchAllOccurances(nums []int, target, start int, resp []int) []int {
 	if start == len(nums) {
 		return resp
