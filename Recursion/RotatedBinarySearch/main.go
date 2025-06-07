@@ -36,9 +36,10 @@ func RotatedBinarySearch(nums []int, target int, start, end int) int {
 		//rotated sorted part - right side
 		if target > nums[mid] && target < nums[end] {
 			return RotatedBinarySearch(nums, target, mid+1, end)
-		} else {
-			return RotatedBinarySearch(nums, target, start, mid-1)
 		}
+
+		return RotatedBinarySearch(nums, target, start, mid-1)
+
 	}
 
 	return -1
