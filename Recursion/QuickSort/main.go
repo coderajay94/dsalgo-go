@@ -9,7 +9,9 @@ func main() {
 	// before that move all smaller before
 	//and all greater after that
 
-	nums := []int{6, 4, 3, 2, 1, 0}
+	//nums := []int{6, 4, 3, 2, 1, 0}
+	nums := []int{5, 2, 3, 1}
+
 	fmt.Println("calling quick sort", nums)
 	quickSort(nums, 0, len(nums)-1)
 	fmt.Println("calling quick sort", nums)
@@ -19,7 +21,7 @@ func quickSort(nums []int, start, end int) {
 
 	//find a pivot element
 	//also find 2 pointers to move the elments around
-	if start > end {
+	if start >= end {
 		return
 	}
 
@@ -38,6 +40,9 @@ func quickSort(nums []int, start, end int) {
 		//check if array is sorted by
 		//checking if start and end elments r are correct position
 
+		// 5,2,3,1
+		// 1,2,3,5
+
 		for nums[low] < pivot {
 			low++
 		}
@@ -45,7 +50,7 @@ func quickSort(nums []int, start, end int) {
 			high--
 		}
 
-		for low <= high {
+		if low <= high {
 			//swap because they are already ahead
 			//both the conditions violated
 			nums[low], nums[high] = nums[high], nums[low]
