@@ -11,6 +11,30 @@ func main() {
 	fmt.Println("string after ", removeA(str))
 	fmt.Println("string after ", removeAWithResponse("", str))
 	fmt.Println("string after using extra variable ", removeABuilder(str))
+	//https://leetcode.com/problems/remove-all-occurrences-of-a-substring/description/
+	fmt.Println("removed  ", removeOccurrences("daabcbaabcbc", "abc"))
+
+}
+
+func removeOccurrences(s string, part string) string {
+	return remove(s, part, 0)
+}
+
+func remove(s string, part string, start int) string {
+	//fmt.Println("string", s, "with start ", start)
+	if len(s) < len(part) {
+		return s
+	}
+
+	if start+len(part) <= len(s) && s[start:start+len(part)] == part {
+		return remove(s[0:start]+s[start+len(part):], part, 0)
+	}
+	if start+len(part) > len(s) {
+		return s
+	}
+
+	// Otherwise, move forward
+	return remove(s, part, start+1)
 
 }
 
