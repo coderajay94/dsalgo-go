@@ -9,7 +9,8 @@ func main() {
 	str := "acbabsdazf"
 	fmt.Println("string :", str)
 	fmt.Println("string after ", removeA(str))
-	fmt.Println("string after using builder ", removeABuilder(str))
+	fmt.Println("string after ", removeAWithResponse("", str))
+	fmt.Println("string after using extra variable ", removeABuilder(str))
 
 }
 
@@ -34,4 +35,16 @@ func removeA(str string) string {
 		return removeA(str[1:]) // skip 'a'
 	}
 	return string(str[0]) + removeA(string(str[1:]))
+}
+
+// with a resp field
+func removeAWithResponse(resp, str string) string {
+	if str == "" {
+		fmt.Println("this is reh resp", resp)
+		return str
+	}
+	if str[0] == 'a' {
+		return removeAWithResponse(resp, str[1:]) // skip 'a'
+	}
+	return string(resp+string(str[0])) + removeA(string(str[1:]))
 }
