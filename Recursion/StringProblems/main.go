@@ -6,13 +6,45 @@ import (
 )
 
 func main() {
-	str := "acbabsdazf"
-	fmt.Println("string :", str)
-	fmt.Println("string after ", removeA(str))
-	fmt.Println("string after ", removeAWithResponse("", str))
-	fmt.Println("string after using extra variable ", removeABuilder(str))
-	//https://leetcode.com/problems/remove-all-occurrences-of-a-substring/description/
-	fmt.Println("removed  ", removeOccurrences("daabcbaabcbc", "abc"))
+	// str := "acbabsdazf"
+	// fmt.Println("string :", str)
+	// fmt.Println("string after ", removeA(str))
+	// fmt.Println("string after ", removeAWithResponse("", str))
+	// fmt.Println("string after using extra variable ", removeABuilder(str))
+	// //https://leetcode.com/problems/remove-all-occurrences-of-a-substring/description/
+	// fmt.Println("removed  ", removeOccurrences("daabcbaabcbc", "abc"))
+
+	//fmt.Println("skip apple", skipApple("skappleadapples", "apple"))
+	fmt.Println("skip apple", skipAppNotApple("skappeadapples", "apple", "app"))
+
+}
+
+// just removes the string and return the reminging one
+// it doesn't go and compare the whole remaining string
+func skipApple(s string, apple string) string {
+	fmt.Println(s)
+	if s == "" {
+		return s
+	}
+
+	if len(s) >= len(apple) && s[0:len(apple)] == apple {
+		return skipApple(s[len(apple):], apple)
+	} else {
+		return string(s[0]) + skipApple(s[1:], apple)
+	}
+
+}
+
+func skipAppNotApple(s string, apple, app string) string {
+	fmt.Println(s)
+	if s == "" {
+		return s
+	}
+	if strings.HasPrefix(s, app) && !strings.HasPrefix(s, apple) {
+		return skipAppNotApple(s[len(app):], apple, app)
+	} else {
+		return string(s[0]) + skipAppNotApple(s[1:], apple, app)
+	}
 
 }
 
