@@ -11,10 +11,10 @@ func main() {
 }
 
 func subseq(str string) []string {
-	return sub("", str, []string{})
+	return sub("", str)
 }
 
-func sub(pr string, un string, resp []string) []string {
+func sub(pr string, un string) []string {
 
 	if un == "" {
 		res := []string{pr}
@@ -24,8 +24,8 @@ func sub(pr string, un string, resp []string) []string {
 	ch := string(un[0])
 	//resp = append(resp, ch)
 
-	left := sub(pr+ch, un[1:], resp)
-	right := sub(pr, un[1:], resp)
+	left := sub(pr+ch, un[1:])
+	right := sub(pr, un[1:])
 	return append(left, right...)
 }
 
