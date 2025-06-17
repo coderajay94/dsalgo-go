@@ -10,7 +10,54 @@ func main() {
 		{true, true, true},
 	}
 
-	solveMaze(maze, 0, 0, "")
+	//solveMaze(maze, 0, 0, "")
+	result := [][]int{
+		{0, 0, 0},
+		{0, 0, 0},
+		{0, 0, 0},
+	}
+
+	solveMazeWithPath(maze, 0, 0, result, 1)
+}
+
+func solveMazeWithPath(maze [][]bool, row, column int, result [][]int, steps int) {
+	//fmt.Println(row, column, path)
+	//res := [][]int{}
+
+	if row == len(maze)-1 && column == len(maze[0])-1 {
+		result[row][column] = steps
+		for i := 0; i < len(result); i++ {
+			fmt.Println(result[i])
+		}
+		fmt.Println()
+		return
+	}
+
+	if maze[row][column] == false {
+		return
+	}
+
+	maze[row][column] = false
+	result[row][column] = steps
+
+	if row < len(maze)-1 {
+		solveMazeWithPath(maze, row+1, column, result, steps+1)
+	}
+
+	if column < len(maze[0])-1 {
+		solveMazeWithPath(maze, row, column+1, result, steps+1)
+	}
+
+	if row > 0 {
+		solveMazeWithPath(maze, row-1, column, result, steps+1)
+	}
+
+	if column > 0 {
+		solveMazeWithPath(maze, row, column-1, result, steps+1)
+	}
+
+	maze[row][column] = true
+	result[row][column] = 0
 }
 
 func solveMaze(maze [][]bool, row, column int, path string) {
