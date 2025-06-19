@@ -39,6 +39,56 @@ func (list LinkedList) PrintLinkedList() {
 	fmt.Println("End")
 }
 
+//using actual reference as going to delete
+
+func (list *LinkedList) DeleteDataNode(data interface{}) {
+
+	//list can also be empty - of called like below
+	//var list *LinkedList = nil
+	//	list.DeleteDataNode(10) // ✅ This will NOT panic — but `list == nil`
+
+	//case 1 has 2 parts : when trying to delete from empty list
+	if list == nil || list.Head == nil {
+		fmt.Println("Trying to delete, ", data, " from an empty LinkedList")
+		return
+	}
+	previousNode := list.Head
+
+	//case 2 : when head node data is deleted
+	if data == previousNode.Data {
+		list.Head = previousNode.Next
+		list.Length--
+		return
+	}
+
+	for previousNode.Next.Data != data {
+		if previousNode.Next.Next == nil {
+			fmt.Println(data, " not found")
+			return
+		}
+		// to move pointed to correct position
+		previousNode = previousNode.Next
+	}
+
+	previousNode.Next = previousNode.Next.Next
+	list.Length--
+	return
+}
+
+func (list LinkedList) CheckDataNode(data interface{}) {
+	node := list.Head
+	counter := 0
+	for node.Next != nil {
+		counter++
+		if node.Data == data {
+			fmt.Println(data, ": data found at position:", counter)
+			return
+		}
+		node = node.Next
+	}
+
+}
+
 func main() {
 	list := LinkedList{}
 
@@ -47,13 +97,29 @@ func main() {
 	node2 := &Node{Data: 18}
 	node3 := &Node{Data: 81}
 	node4 := &Node{Data: 108}
+	node5 := &Node{Data: 28}
+
 	list.prepend(node1)
 	list.prepend(node2)
 	list.prepend(node3)
 	list.prepend(node4)
+	list.prepend(node5)
 
 	//just prints the address and length of that list
-	fmt.Println(list)
+	//fmt.Println(list)
 
 	list.PrintLinkedList()
+
+	//list.CheckDataNode(81)
+	// list.DeleteDataNode(81)
+	// list.PrintLinkedList()
+
+	//case 2 : when head node data is deleted
+	list.DeleteDataNode(100)
+	list.PrintLinkedList()
+
+	//case 1 : when empty list, deleteing data
+	// list2 := LinkedList{}
+	// list2.DeleteDataNode(100)
+
 }
