@@ -94,6 +94,36 @@ func (list *LinkedList) InsertAtIndex(index int, data interface{}) {
 	list.Size++
 }
 
+func (list *LinkedList) DeleteFirst() {
+	if list.Size == 0 {
+		fmt.Println("delete can't be performed")
+	} else if list.Size == 1 {
+		list.Head = nil
+		list.Tail = nil
+		list.Size--
+	} else {
+		list.Head = list.Head.Next
+		list.Size--
+	}
+}
+
+func (list *LinkedList) DeleteLast() {
+	if list.Size == 0 {
+		fmt.Println("Can't delete from an empty list")
+	} else if list.Size == 1 {
+		list.Head = nil
+		list.Tail = nil
+		list.Size--
+	} else {
+		pointer := list.Head
+		for pointer.Next != nil {
+			pointer = pointer.Next
+		}
+		pointer.Next = nil
+		list.Size--
+	}
+}
+
 func main() {
 	fmt.Println("linkedlist with head and tail")
 
@@ -115,6 +145,27 @@ func main() {
 	// list.PrintLinkedList()
 	fmt.Println("------------------------")
 
-	list.InsertAtIndex(4, 100)
+	// list.InsertAtIndex(4, 100)
+	// list.PrintLinkedList()
+
+	fmt.Println("------------------------")
+
+	list.DeleteFirst()
+	list.PrintLinkedList()
+	fmt.Println("------------------------")
+
+	list.DeleteFirst()
+	list.PrintLinkedList()
+	fmt.Println("------------------------")
+
+	list.DeleteLast()
+	list.PrintLinkedList()
+	fmt.Println("------------------------")
+
+	list.DeleteLast()
+	list.PrintLinkedList()
+	fmt.Println("******")
+
+	list.DeleteLast()
 	list.PrintLinkedList()
 }
