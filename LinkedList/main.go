@@ -115,7 +115,7 @@ func main() {
 	// list.PrintLinkedList()
 
 	//case 2 : when head node data is deleted
-	list.DeleteDataNode(100)
+	list.DeleteDataNode(28)
 	list.PrintLinkedList()
 
 	//case 1 : when empty list, deleteing data
