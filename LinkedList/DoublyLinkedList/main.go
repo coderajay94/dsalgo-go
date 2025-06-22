@@ -49,6 +49,22 @@ func (list DoublyLinkedList) PrintDoublyLinkedList() {
 	fmt.Println("End")
 }
 
+func (list DoublyLinkedList) PrintReverse() {
+	if list.Tail == nil {
+		fmt.Println("Empty List")
+		return
+	}
+
+	node := list.Tail
+
+	for node != nil {
+		fmt.Print(node.Data, " -> ")
+		node = node.Prev
+	}
+	fmt.Println("Start")
+
+}
+
 func (list *DoublyLinkedList) insertAtLast(data interface{}) {
 	node := &Node{Data: data}
 	if list.Size == 0 {
@@ -63,7 +79,42 @@ func (list *DoublyLinkedList) insertAtLast(data interface{}) {
 	}
 }
 
+func (list *DoublyLinkedList) DeleteAtFirst() {
+	if list.Size == 0 {
+		return
+	} else if list.Size == 1 {
+		list.Head = nil
+		list.Tail = nil
+	} else {
+		list.Head = list.Head.Next
+		list.Head.Prev = nil
+		list.Size--
+	}
+}
+
+func (list *DoublyLinkedList) DeleteAtLast() {
+	if list.Size == 0 {
+		return
+	} else if list.Size == 1 {
+		list.Head = nil
+		list.Tail = nil
+	} else {
+		list.Tail = list.Tail.Prev
+		list.Tail.Next = nil
+		list.Size--
+	}
+
+}
+
+func (list *DoublyLinkedList) DeleteValue(value interface{}) {
+
+}
+
 func main() {
+
+	//empty := NewDoublyLinkedList()
+	onlyOne := NewDoublyLinkedList()
+	onlyOne.InsertAtFirst(11)
 
 	list := NewDoublyLinkedList()
 
@@ -75,5 +126,24 @@ func main() {
 	list.insertAtLast(100)
 	list.insertAtLast(200)
 
+	// 	list.PrintDoublyLinkedList()
+	// 	list.PrintReverse()
+
+	// 	empty.PrintReverse()
+	// 	onlyOne.PrintReverse()
+
+	// 	fmt.Println("------------------")
+	// 	list.DeleteAtLast()
+	// 	list.PrintDoublyLinkedList()
+	// 	list.DeleteAtLast()
+	// 	list.PrintDoublyLinkedList()
+	// 	fmt.Println("------------------")
+	// 	onlyOne.PrintDoublyLinkedList()
+	// 	onlyOne.DeleteAtFirst()
+	// 	onlyOne.PrintDoublyLinkedList()
+	// 	onlyOne.DeleteAtFirst()
+	// 	onlyOne.PrintDoublyLinkedList()
+	fmt.Println("------------------")
 	list.PrintDoublyLinkedList()
+	fmt.Println("------------------")
 }
