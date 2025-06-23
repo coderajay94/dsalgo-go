@@ -148,24 +148,57 @@ func main() {
 	// list.InsertAtIndex(4, 100)
 	// list.PrintLinkedList()
 
-	fmt.Println("------------------------")
+	// fmt.Println("------------------------")
 
-	list.DeleteFirst()
-	list.PrintLinkedList()
-	fmt.Println("------------------------")
+	// list.DeleteFirst()
+	// list.PrintLinkedList()
+	// fmt.Println("------------------------")
 
-	list.DeleteFirst()
-	list.PrintLinkedList()
-	fmt.Println("------------------------")
+	// list.DeleteFirst()
+	// list.PrintLinkedList()
+	// fmt.Println("------------------------")
 
-	list.DeleteLast()
-	list.PrintLinkedList()
-	fmt.Println("------------------------")
+	// list.DeleteLast()
+	// list.PrintLinkedList()
+	// fmt.Println("------------------------")
 
-	list.DeleteLast()
-	list.PrintLinkedList()
-	fmt.Println("******")
+	// list.DeleteLast()
+	// list.PrintLinkedList()
+	// fmt.Println("******")
 
-	list.DeleteLast()
+	// list.DeleteLast()
+	// list.PrintLinkedList()
+
+	fmt.Println("--------------------------")
+	//list.InsertAtIndexUsingRecursion(1, 222)
+	list.InsertAtIndexUsingRecursion(4, 100)
+}
+
+func (list *LinkedList) InsertAtIndexUsingRecursion(index int, data interface{}) {
+	if index == 0 {
+		newNode := &Node{Data: data}
+		list.Head = newNode
+		return
+	}
+
+	insertAt(data, list, index-1, list.Head)
 	list.PrintLinkedList()
+}
+
+func insertAt(data interface{}, list *LinkedList, index int, node *Node) {
+
+	if node == nil {
+		fmt.Println("index is out of reach")
+		return
+	}
+	fmt.Println(index, data, node.Data)
+	if index == 0 {
+		newNode := &Node{Data: data, Next: node.Next}
+		node.Next = newNode
+		fmt.Println("returned here")
+		list.PrintLinkedList()
+		return
+	} else {
+		insertAt(data, list, index-1, node.Next)
+	}
 }
