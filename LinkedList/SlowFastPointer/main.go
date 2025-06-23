@@ -81,7 +81,7 @@ func hasCycleCount(head *Node) int {
 				counter++
 				slow = slow.Next
 			}
-			break
+			return counter
 		}
 	}
 	return counter
