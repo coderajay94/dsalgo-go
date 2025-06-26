@@ -1,3 +1,5 @@
+package main
+
 type Node struct {
 	Val  int
 	Next *Node
@@ -127,3 +129,7 @@ func (this *MyLinkedList) DeleteAtIndex(index int) {
  * obj.AddAtIndex(index,val);
  * obj.DeleteAtIndex(index);
  */
+
+func main() {
+
+}
