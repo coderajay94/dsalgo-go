@@ -106,6 +106,7 @@ func (this *MyLinkedList) DeleteAtIndex(index int) {
 			node = node.Next
 		}
 
+		//nil check
 		if node.Next == nil {
 			return
 		}
