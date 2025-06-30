@@ -38,7 +38,6 @@ func (this *MyLinkedList) AddAtHead(val int) {
 		this.Tail = newNode
 	}
 
-	// newNode := &Node{Val:val, Next:this.Head}
 	this.Head = newNode
 }
 
